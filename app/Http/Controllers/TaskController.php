@@ -28,7 +28,11 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        // 変数（$user）にユーザー情報を代入
+        $user = Auth::user();
+
+        // 変数（$user）を渡しつつ「task.create」ビューを表示
+        return view('task.create', compact('user'));
     }
 
     /**
@@ -36,7 +40,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 変数（$task）に新しいタスクインスタンスを生成
+        $task = new Task;
+
+        // 変数（$task）にフォームで入力された値を代入してデータベースへ反映
+        $task->fill($request->all())->save();
+
+        // 「dashboard」ビューを表示
+        return redirect(route('dashboard'));
     }
 
     /**
