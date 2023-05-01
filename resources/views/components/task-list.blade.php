@@ -15,7 +15,7 @@
                         @foreach ($tasks as $task)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <a class="text-blue-500 hover:text-blue-700" href="#">{{$task->id}}</a>
+                                    <a class="text-blue-500 hover:text-blue-700" href="{{route('task.edit', ['task' => $task->id])}}">{{$task->id}}</a>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$task->name}}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">@if ($task->done == 1) o @else x @endif</td>

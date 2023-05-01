@@ -25,5 +25,5 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
-    Route::resource('task', TaskController::class)->only('create', 'store', 'destroy');
+    Route::resource('task', TaskController::class)->only('create', 'store', 'edit', 'update', 'destroy');
 });

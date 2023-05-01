@@ -63,7 +63,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        // 変数（$user）を渡しつつ「task.edit」ビューを表示
+        return view('task.edit', compact('task'));
     }
 
     /**
@@ -71,7 +72,22 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        // タスク名にフォームから取得したタスク名を代入
+        $task->name = $request->name;
+
+        // タスク完了チェックボックスが"on"か、そうでないかチェック
+        // "on": 1を代入 / "off": 0を代入
+        if ($request->done == "on") {
+            $task->done = 1;
+        } else {
+            $task->done = 0;
+        };
+
+        // データベースへ反映
+        $task->save();
+
+        // 「dashboard」ビューを表示
+        return redirect(route('dashboard'));
     }
 
     /**
