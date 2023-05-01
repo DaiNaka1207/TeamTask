@@ -79,6 +79,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        // 対象となるレコードをデータベースから削除
+        $task->delete();
+
+        // 「dashboard」ビューを表示
+        return redirect(route('dashboard'));
     }
 }
